@@ -12,11 +12,13 @@ body {
 }
 
 .banner-matrix-cell-on {
-    background-color: black;
+    background-color: lightsalmon;
+    border : 1px solid black;
 }
 
 .banner-character-table {
     display: inline-block;
+    border-collapse: collapse;
 }
 
 @media (min-width : 1000px) {
