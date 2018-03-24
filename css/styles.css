@@ -1,10 +1,14 @@
 body {
     text-align: center;
+    background: url(../images/paper_background.jpg);
+    background-repeat: repeat;
 }
 
 #banner {
     width:100%;
     height: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .banner-matrix-cell-default {
@@ -12,7 +16,7 @@ body {
 }
 
 .banner-matrix-cell-on {
-    background-color: lightsalmon;
+    background-color: brown;
     border : 1px solid black;
 }
 
