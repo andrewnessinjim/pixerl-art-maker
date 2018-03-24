@@ -9,7 +9,7 @@ body {
 .banner-matrix-cell-default {
     width:15px;
     height:15px; 
-    background-color:white;
+    background-color: none;
 }
 
 .banner-matrix-cell-on {
