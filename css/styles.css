@@ -1,7 +1,8 @@
 body {
-    text-align: center;
     background: url(../images/paper_background.jpg);
     background-repeat: repeat;
+    margin : 0px;
+    overflow-x: hidden;
 }
 
 #banner {
@@ -9,6 +10,11 @@ body {
     height: 100%;
     max-width: 1000px;
     margin: 0 auto;
+}
+
+header {
+    margin : 0 auto;
+    margin : 5px;
 }
 
 .banner-matrix-cell-default {
@@ -55,4 +61,48 @@ body {
     .banner-character-table {
         margin: 1px;
     }
+}
+
+#info_icon {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    box-shadow: 2px 2px;
+    animation-duration: 1s;
+    animation-name: slideinfromright;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#close_icon {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    box-shadow: 2px 2px;
+    display: none;
+    opacity: 0;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#info_icon:hover,#close_icon:hover {
+    transform: scale(1.2)
+}
+
+@keyframes slideinfromright {
+    from {
+        transform: scale(2.0);
+    }
+
+}
+
+#instructions {
+    width: 300px;
+    background-color: peachpuff;
+    padding: 10px;
+    border : 2px ridge brown;
+    opacity: 0.7;
+    border-radius: 5px;
+    margin-left : -300px;
+    opacity : 0;
 }

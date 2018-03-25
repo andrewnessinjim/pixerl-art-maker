@@ -109,7 +109,6 @@ function MatrixCharacter(character) {
         matrix = ['<table class="banner-character-table">',
                     matrix,
                     "</table>"].join("");
-        console.log(matrix);
         return matrix;
     }
 }
