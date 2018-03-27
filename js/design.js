@@ -21,6 +21,7 @@ $(function() {
     });
 
     $('#info_icon').click(function(){
+        $('body').css("overflow-x : hidden")
         $('#instructions').animate({
             marginLeft : "-5px",
             opacity : 1
@@ -35,11 +36,13 @@ $(function() {
             $('#info_icon').css("display","none");
             $('#close_icon').css("display", "inline");
             $('#close_icon').animate({opacity:1})
+            $('body').css("overflow-x : visible");
         })
         
     });
 
     $('#close_icon').click(function(){
+        $('body').css("overflow-x : hidden")
         $('#instructions').animate({
             marginLeft : "-300px",
             opacity : 0
@@ -52,7 +55,8 @@ $(function() {
         function() {
             $('#close_icon').css("display","none");
             $('#info_icon').css("display", "inline");
-            $('#info_icon').animate({opacity:1})
+            $('#info_icon').animate({opacity:1});
+            $('body').css("overflow-x : visible");
         });
     });
 })
