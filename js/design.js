@@ -20,43 +20,42 @@ $(function() {
         });
     });
 
+    let modalContainer = $('#modal-container');
     $('#info_icon').click(function(){
-        $('body').css("overflow-x : hidden")
-        $('#instructions').animate({
-            marginLeft : "-5px",
-            opacity : 1
-        },
-        1000);
-      
-        $('#info_icon').animate({
-            opacity : 0
-        },
-        500,
-        function() {
-            $('#info_icon').css("display","none");
-            $('#close_icon').css("display", "inline");
-            $('#close_icon').animate({opacity:1})
-            $('body').css("overflow-x : visible");
-        })
-        
+       displayModal();
     });
 
-    $('#close_icon').click(function(){
-        $('body').css("overflow-x : hidden")
-        $('#instructions').animate({
-            marginLeft : "-300px",
-            opacity : 0
-        },
-        1000);
-        $('#close_icon').animate({
-            opacity : 0
-        },
-        500,
-        function() {
-            $('#close_icon').css("display","none");
-            $('#info_icon').css("display", "inline");
-            $('#info_icon').animate({opacity:1});
-            $('body').css("overflow-x : visible");
-        });
+    $('#help_icon').click(function(){
+        displayModal();
     });
+
+    $('.modal-close-button').click(function() {
+        hideModal();
+    });
+
+    //Close the modal if the user click anywhere outside the modal
+    modalContainer.click(function() {
+        hideModal();
+    })
+
+    //Fade in while displaying
+    function displayModal(){
+        modalContainer.css("opacity", 0);
+        modalContainer.css("display","block");
+        modalContainer.animate({
+            opacity : 1
+        }, 400);
+    }
+
+    //Fade out while hiding
+    function hideModal(){
+        modalContainer.css("opacity", 1);
+        modalContainer.animate({
+            opacity : 0
+        }, 
+        400,
+        function() {
+            modalContainer.css("display","none");
+        });
+    }
 })

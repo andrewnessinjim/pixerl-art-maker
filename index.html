@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pixel Art Maker</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script src="js/MatrixString.js"></script>
-    <script src="js/design.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Pixel Art Maker</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+        <script src="js/MatrixString.js"></script>
+        <script src="js/design.js"></script>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
 
-<body>
-    <div class="app-container">
-        <header>
-            <div id="banner"></div>
-        </header>
-    
-        <div id="info_panel">
-            <div id ="icon-container">
-                <img id = "info_icon" src="images/info_icon_small.png">
-                <img id = "close_icon" src="images/close_icon_small.png">
-            </div>
-            <div id = "instructions">
-                <ul>
-                    <li>Hover over the header text for a little fun :)</li>
-                </ul>
+    <body>
+        <div class="app-container">
+            <header>
+                <div id="banner"></div>
+            </header>
+        
+            <div class ="icon-container">
+                <img id = "info_icon" src="images/info_small.png">
+                <img id = "help_icon" src="images/help_small.png">
             </div>
         </div>
-    </div>
-</body>
+
+        <div id="modal-container" class="modal">
+            <div class="modal-content">
+            <span class="modal-close-button">&times;</span>
+                <p>Some text in the Modal..</p>
+            </div>
+        </div>
+    </body>
 
 </html>
