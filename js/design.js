@@ -45,7 +45,15 @@ $(function() {
     });
 
     $('#help_icon').click(function(){
-        displayModal("Help icon was clicked");
+        displayModal(`
+        <p class="form-header">Instructions</p>
+            <ul>
+                <li>You can hover over the heading "Pixel Art Maker" for a little fun :)</li>
+                <li>Choose the grid size and click on New Grid button. The grid will be created with appropriate number of cells</li>
+                <li>Select the foreground color you wish. Left clicking on a cell and dragging the cursor will fill the cells with the foreground color.</li>
+                <li>Select the background color you wish. Right clicking on a cell and dragging the cursor will fill the cells with the background color.</li>
+            </ul>
+        `);
     });
 
     $('.modal-close-button').click(function() {
@@ -66,6 +74,8 @@ $(function() {
         if(isError){
             modalMessage = '<img src="images/bug.png">' + modalMessage;
             modelData.css("color" , "red");
+        } else {
+            modelData.css("color" , "black");
         }
         modelData.append(modalMessage);
         modalContainer.animate({
