@@ -1,5 +1,7 @@
 const headerColors = ["red","yellow","green","blue","violet","pink"];
-
+const MOUSE_BUTTON_LEFT = 1;
+const MOUSE_BUTTON_MIDDLE = 2;
+const MOUSE_BUTTON_RIGHT = 3;
 $(function() {
     $('#banner').css("opacity","0");
     $('#banner').append(new MatrixString("PIXEL ART MAKER").getHTMLString());
@@ -29,7 +31,17 @@ $(function() {
 
     let modalContainer = $('#modal-container');
     $('#info_icon').click(function(){
-       displayModal("Info icon was clicked");
+       displayModal(`
+       <p class="form-header">Attributions</p>
+       <ul>
+            <li><a href="https://www.freepik.com/free-photos-vectors/background">Background image   created by Aopsan - Freepik.com</a></li>
+
+            <li><div>Icons made by <a href="https://www.flaticon.com/authors/prosymbols"        title="Prosymbols">Prosymbols</a> from <a href="https://www.flaticon.com/"      title="Flaticon">www.flaticon.com</a> is licensed by <a      href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0"   target="_blank">CC 3.0 BY</a></div></li>
+    
+    
+            <li><div>Icons made by <a href="https://www.flaticon.com/authors/smalllikeart" title="smalllikeart">smalllikeart</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div></li>
+        </ul>
+       `);
     });
 
     $('#help_icon').click(function(){
@@ -105,5 +117,28 @@ $(function() {
         $('.canvas-table-container').append(table);
         $('.canvas-cell').css("background-color", $('#input-bg-color').val());
         $('.canvas-table').addClass('animate');
+        $('.canvas-cell').css("border-color", $('#input-border-color').val());
+
+        $('.canvas-cell').mouseenter(function(event){
+            colorCell($(this), event);            
+        });
+
+        $('.canvas-cell').mousedown(function(event){
+            event.preventDefault();
+            colorCell($(this), event);            
+        });
+
+        $('.canvas-cell').contextmenu(function(event) {
+            //Ignore right click on canvas cells
+            event.preventDefault();
+        });
     });
+
+    function colorCell(cell, event) {
+        if(event.which === MOUSE_BUTTON_LEFT) {
+            cell.css("background-color", $('#input-fg-color').val());
+        } else if (event.which === MOUSE_BUTTON_RIGHT) {
+            cell.css("background-color", $('#input-bg-color').val());
+        }
+    }
 })
