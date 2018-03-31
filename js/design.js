@@ -33,7 +33,7 @@ $(function() {
         hideModal();
     });
 
-    //Close the modal if the user click anywhere outside the modal
+    //Close the modal if the user clicks anywhere outside the modal
     modalContainer.click(function() {
         hideModal();
     })

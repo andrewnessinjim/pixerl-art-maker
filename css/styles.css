@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Chicle');
+
 body {
     background: url(../images/paper_background.jpg);
     background-repeat: repeat;
@@ -75,4 +77,61 @@ body {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.form-header {
+    font-family: 'Chicle', cursive;
+    font-size: 180%;
+    flex:1;
+    margin : 10px;
+}
+
+.form-container {
+    text-align: center;
+    align-items: center;
+    max-width: 80%;
+    margin: 10px auto;
+    border: 1px solid brown;
+}
+
+@media (min-width : 850px) {
+    .form-container {
+        display: flex;
+    }
+}
+
+#input-grid-height, #input-grid-width {
+    padding: 5px 0;
+    margin: 0 5px;
+    max-width: 80px;
+}
+
+#input-grid-height:focus, #input-grid-width:focus {
+    border: 2px solid darkgreen;
+}
+
+#btn-generate-grid {
+    padding: 15px 5px;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 5%;
+    border : 0;
+    margin : 5px;
+    flex: 1;
+    max-width: 120px;
+}
+
+#btn-generate-grid:hover {
+    cursor: pointer;
+    background-color: lightgreen;
+    color: black;
+}
+
+.form-container label {
+    color: rgb(0, 26, 0);
+}
+
+.grid-input-container {
+    margin : 5px;
+    flex : 1;
 }
