@@ -101,9 +101,9 @@ $(function() {
             table,
             "</table>"
         ].join("");
-        $('.canvas-container').empty();
-        $('.canvas-container').append(table);
-    
+        $('.canvas-table-container').empty();
+        $('.canvas-table-container').append(table);
+        $('.canvas-cell').css("background-color", $('#input-bg-color').val());
         $('.canvas-table').addClass('animate');
     });
 })

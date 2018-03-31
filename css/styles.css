@@ -7,6 +7,7 @@ body {
 }
 
 #banner {
+    margin : 10px auto;
     text-align: center;
 }
 
@@ -119,6 +120,7 @@ body {
     margin : 5px;
     flex: 1;
     max-width: 120px;
+    box-shadow: 2px 2px 2px black;
 }
 
 #btn-generate-grid:hover {
