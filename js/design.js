@@ -20,13 +20,20 @@ $(function() {
         });
     });
 
+
+    $('.grid-input-container input[type="number"]').focusout(function() {
+        if(!$(this).val()) {
+            $(this).val(10);
+        }
+    });
+
     let modalContainer = $('#modal-container');
     $('#info_icon').click(function(){
-       displayModal();
+       displayModal("Info icon was clicked");
     });
 
     $('#help_icon').click(function(){
-        displayModal();
+        displayModal("Help icon was clicked");
     });
 
     $('.modal-close-button').click(function() {
@@ -39,9 +46,16 @@ $(function() {
     })
 
     //Fade in while displaying
-    function displayModal(){
+    function displayModal(modalMessage, isError){
         modalContainer.css("opacity", 0);
         modalContainer.css("display","block");
+        let modelData = modalContainer.find('.modal-data').first();
+        modelData.empty();
+        if(isError){
+            modalMessage = '<img src="images/bug.png">' + modalMessage;
+            modelData.css("color" , "red");
+        }
+        modelData.append(modalMessage);
         modalContainer.animate({
             opacity : 1
         }, 400);
@@ -58,4 +72,38 @@ $(function() {
             modalContainer.css("display","none");
         });
     }
+
+    $('#btn-generate-grid').click(function() {
+        let nColumns = $('#input-grid-height').val();
+        let nRows = $('#input-grid-width').val();
+
+        if(!nColumns || !nRows) {
+            displayModal("<p>Please enter values from 1 to 100 only</p>", true);
+            return;
+        } 
+        
+        let table = "";
+
+        for(let rowNum = 0 ; rowNum < nRows; rowNum++) {
+            let row = [];
+            for(let colNum = 0 ; colNum <= nColumns; colNum++) {
+                row.push('<td class="canvas-cell"></td>');
+            }
+            table = [
+                table,
+                '<tr>',
+                row.join(""),
+                '</tr>'
+            ].join("");
+        }
+        table = [
+            "<table class = 'canvas-table'>",
+            table,
+            "</table>"
+        ].join("");
+        $('.canvas-container').empty();
+        $('.canvas-container').append(table);
+    
+        $('.canvas-table').addClass('animate');
+    });
 })

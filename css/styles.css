@@ -135,3 +135,31 @@ body {
     margin : 5px;
     flex : 1;
 }
+
+.canvas-cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+.canvas-container {
+    text-align: center;
+}
+
+.canvas-table {
+    margin : 10px auto;
+    border-collapse: collapse;
+}
+
+.canvas-table.animate {
+    animation: fullScale 1s;
+}
+
+@keyframes fullScale{
+    from{
+        transform:scale(0);
+    }
+    to{
+        transform:scale(1);
+    }
+}

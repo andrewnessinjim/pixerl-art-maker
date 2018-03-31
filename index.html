@@ -28,15 +28,15 @@
 
                 <div class="grid-input-container">
                     <label for="input-grid-height">Grid Height: </label>
-                    <input type="number" id="input-grid-height">
+                    <input type="number" id="input-grid-height" value=10>
                 </div>
 
                 <div class="grid-input-container">
                     <label for="input-grid-width">Grid Width: </label>
-                    <input type="number" id="input-grid-width">
+                    <input type="number" id="input-grid-width" value=10>
                 </div>
 
-                <input type="button" value="Generate Grid" id="btn-generate-grid">
+                <input type="button" value="New Grid" id="btn-generate-grid">
             </div>
 
             <div class="form-container">
@@ -44,21 +44,24 @@
 
                 <div class="grid-input-container">
                     <label for="input-fg-color">Forground Color: </label>
-                    <input type="color" id="input-fg-color">
+                    <input type="color" id="input-fg-color" value="#000000">
                 </div>
 
                 <div class="grid-input-container">
                     <label for="input-bg-color">Background Color: </label>
-                    <input type="color" id="input-bg-color">
+                    <input type="color" id="input-bg-color" value="#ffffff">
                 </div>
 
+            </div>
+
+            <div class="canvas-container"></div>
             </div>
         </div>
 
         <div id="modal-container" class="modal">
             <div class="modal-content">
-            <span class="modal-close-button">&times;</span>
-                <p>Some text in the Modal..</p>
+                <span class="modal-close-button">&times;</span>
+                <div class="modal-data"></div>
             </div>
         </div>
     </body>
