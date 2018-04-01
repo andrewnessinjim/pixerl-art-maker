@@ -2,114 +2,79 @@ const headerColors = ["red","yellow","green","blue","violet","pink"];
 const MOUSE_BUTTON_LEFT = 1;
 const MOUSE_BUTTON_MIDDLE = 2;
 const MOUSE_BUTTON_RIGHT = 3;
+const DEFAULT_GRID_SIDE = 10;
+
+/**
+ * @description Entry point for javascript code. This function is executed after the DOM loads.
+ */
 $(function() {
-    $('#banner').css("opacity","0");
-    $('#banner').append(new MatrixString("PIXEL ART MAKER").getHTMLString());
-    $('#banner').animate({
-        opacity : 1
-    }, 200);
+    generateHeader();
+    setupFormValidator();
+    setupModal();
+    attachGridButtonListener();
+});
 
-    $('.banner-matrix-cell-on').mouseenter(function(event){
-        $(event.target).animate({
-            opacity : 0
-        },
-        1000,
-        function() {
-            $(event.target).css("background-color",headerColors[Math.floor(Math.random()*5)]);
-            $(event.target).animate({
-                opacity : 1
-            }, 500)
-        });
-    });
-
-
-    $('.grid-input-container input[type="number"]').focusout(function() {
-        if(!$(this).val()) {
-            $(this).val(10);
-        }
-    });
-
-    let modalContainer = $('#modal-container');
-    $('#info_icon').click(function(){
-       displayModal(`
-       <p class="form-header">Attributions</p>
-       <ul>
-            <li><a href="https://www.freepik.com/free-photos-vectors/background">Background image   created by Aopsan - Freepik.com</a></li>
-
-            <li><div>Icons made by <a href="https://www.flaticon.com/authors/prosymbols"        title="Prosymbols">Prosymbols</a> from <a href="https://www.flaticon.com/"      title="Flaticon">www.flaticon.com</a> is licensed by <a      href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0"   target="_blank">CC 3.0 BY</a></div></li>
-    
-    
-            <li><div>Icons made by <a href="https://www.flaticon.com/authors/smalllikeart" title="smalllikeart">smalllikeart</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div></li>
-        </ul>
-       `);
-    });
-
-    $('#help_icon').click(function(){
-        displayModal(`
-        <p class="form-header">Instructions</p>
-            <ul>
-                <li>You can hover over the heading "Pixel Art Maker" for a little fun :)</li>
-                <li>Choose the grid size and click on New Grid button. The grid will be created with appropriate number of cells</li>
-                <li>Select the foreground color you wish. Left clicking on a cell and dragging the cursor will fill the cells with the foreground color.</li>
-                <li>Select the background color you wish. Right clicking on a cell and dragging the cursor will fill the cells with the background color.</li>
-                <li>The border color can only be set before generating the grid</li>
-            </ul>
-        `);
-    });
-
-    $('.modal-close-button').click(function() {
-        hideModal();
-    });
-
-    //Close the modal if the user clicks anywhere outside the modal
-    modalContainer.click(function() {
-        hideModal();
-    })
-
-    //Fade in while displaying
-    function displayModal(modalMessage, isError){
-        modalContainer.css("opacity", 0);
-        modalContainer.css("display","block");
-        let modelData = modalContainer.find('.modal-data').first();
-        modelData.empty();
-        if(isError){
-            modalMessage = '<img src="images/bug.png">' + modalMessage;
-            modelData.css("color" , "red");
-        } else {
-            modelData.css("color" , "black");
-        }
-        modelData.append(modalMessage);
-        modalContainer.animate({
-            opacity : 1
-        }, 400);
+function colorCell(cell, event) {
+    if(event.which === MOUSE_BUTTON_LEFT) {
+        cell.css("background-color", $('#input-fg-color').val());
+    } else if (event.which === MOUSE_BUTTON_RIGHT) {
+        cell.css("background-color", $('#input-bg-color').val());
     }
+}
 
-    //Fade out while hiding
-    function hideModal(){
-        modalContainer.css("opacity", 1);
-        modalContainer.animate({
-            opacity : 0
-        }, 
-        400,
-        function() {
-            modalContainer.css("display","none");
-        });
-    }
-
-    $('#btn-generate-grid').click(function() {
+function attachGridButtonListener() {
+    $('#btn-generate-grid').click(function () {
         let nColumns = $('#input-grid-height').val();
         let nRows = $('#input-grid-width').val();
 
-        if(!nColumns || !nRows) {
-            displayModal("<p>Please enter values from 1 to 100 only</p>", true);
+        //Validate Inputs
+        if (!nColumns || !nRows) {
+            Modal.displayModal("<p>Please enter values from 1 to 100 only</p>", true);
             return;
-        } 
-        
-        let table = "";
+        }
 
-        for(let rowNum = 0 ; rowNum < nRows; rowNum++) {
+        //Create and attach the table to the DOM
+        let table = getHTMLTable(nRows, nColumns);
+        $('.canvas-table-container').empty().append(table);
+
+        //All cells will initially have the selected background color
+        $('.canvas-cell').css({
+            backgroundColor: $('#input-bg-color').val(),
+            borderColor: $('#input-border-color').val()
+        });
+
+        //Animates the table to zoom in
+        $('.canvas-table').addClass('animate');
+
+        //Color cells as the mouse enters a cell
+        $('.canvas-cell').mouseenter(function (event) {
+            colorCell($(this), event);
+        });
+
+        //Color the first cell on which the user clicks before dragging
+        $('.canvas-cell').mousedown(function (event) {
+            event.preventDefault();
+            colorCell($(this), event);
+        });
+
+        //Prevent the context menu on cells, because right click is used for coloring with background color
+        $('.canvas-cell').contextmenu(function (event) {
+            //Ignore right click on canvas cells
+            event.preventDefault();
+        });
+    });
+
+    /**
+     * @description Creates a string representation of an HTML table
+     * @param {number} nRows - Number of rows
+     * @param {number} nColumns - Number or columns
+     * @returns {string} HTML table
+     */
+    function getHTMLTable(nRows, nColumns) {
+        let table = "";
+        for (let rowNum = 0; rowNum < nRows; rowNum++) {
             let row = [];
-            for(let colNum = 0 ; colNum <= nColumns; colNum++) {
+            for (let colNum = 0; colNum <= nColumns; colNum++) {
                 row.push('<td class="canvas-cell"></td>');
             }
             table = [
@@ -124,32 +89,56 @@ $(function() {
             table,
             "</table>"
         ].join("");
-        $('.canvas-table-container').empty();
-        $('.canvas-table-container').append(table);
-        $('.canvas-cell').css("background-color", $('#input-bg-color').val());
-        $('.canvas-table').addClass('animate');
-        $('.canvas-cell').css("border-color", $('#input-border-color').val());
+        return table;
+    }
+}
 
-        $('.canvas-cell').mouseenter(function(event){
-            colorCell($(this), event);            
-        });
-
-        $('.canvas-cell').mousedown(function(event){
-            event.preventDefault();
-            colorCell($(this), event);            
-        });
-
-        $('.canvas-cell').contextmenu(function(event) {
-            //Ignore right click on canvas cells
-            event.preventDefault();
-        });
+/**
+ * @description Attaches click listeners for info, help and modal close buttons
+ */
+function setupModal() {
+    $('#info_icon').click(function () {
+        Modal.showInfo();
     });
 
-    function colorCell(cell, event) {
-        if(event.which === MOUSE_BUTTON_LEFT) {
-            cell.css("background-color", $('#input-fg-color').val());
-        } else if (event.which === MOUSE_BUTTON_RIGHT) {
-            cell.css("background-color", $('#input-bg-color').val());
+    $('#help_icon').click(function(){
+        Modal.showHelp();
+    });
+
+    $('.modal-close-button').click(function() {
+        Modal.hideModal();
+    });
+    let modalContainer = $('#modal-container');
+
+    //Close the modal if the user clicks anywhere outside the modal
+    modalContainer.click(function() {
+        Modal.hideModal();
+    });
+}
+
+/**
+ * @description Attaches a listener which is called when the form inputs lose focus. The listener defaults the values if left empty.
+ */
+function setupFormValidator() {
+    $('.grid-input-container input[type="number"]').focusout(function () {
+        if (!$(this).val()) {
+            $(this).val(DEFAULT_GRID_SIDE);
         }
-    }
-})
+    });
+}
+
+/**
+ * @description Generates "PIXEL ART MAKER" header of the page
+ */
+function generateHeader() {
+    //Create the banner and fade it in. The #banner element's display property must be set to "none" for this function to work
+    $('#banner').append(new MatrixString("PIXEL ART MAKER").getHTMLString()).fadeIn();
+
+    //Fade out the current color, and fade in a new random color when the mouse is hovered over any colored cell
+    $('.banner-matrix-cell-on').mouseenter(function (event) {
+        $(this).fadeTo(1000, 0, function() {
+            $(this).css("background-color", headerColors[Math.floor(Math.random() * 5)]);
+            $(this).fadeTo(500, 1);
+        })
+    });
+}
