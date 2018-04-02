@@ -108,11 +108,12 @@ function setupModal() {
     $('.modal-close-button').click(function() {
         Modal.hideModal();
     });
-    let modalContainer = $('#modal-container');
 
     //Close the modal if the user clicks anywhere outside the modal
-    modalContainer.click(function() {
-        Modal.hideModal();
+    $('#modal-container').click(function(event) {
+        if(event.target.id === 'modal-container') {
+            Modal.hideModal();
+        }
     });
 }
 
