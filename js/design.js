@@ -17,8 +17,13 @@ $(function() {
 function colorCell(cell, event) {
     if(event.which === MOUSE_BUTTON_LEFT) {
         cell.css("background-color", $('#input-fg-color').val());
+        animateCell();
     } else if (event.which === MOUSE_BUTTON_RIGHT) {
         cell.css("background-color", $('#input-bg-color').val());
+        animateCell();
+    }
+    function animateCell() {
+        cell.css("opacity", 0).animate({opacity : 1},200);
     }
 }
 
