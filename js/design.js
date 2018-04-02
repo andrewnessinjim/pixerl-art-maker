@@ -24,8 +24,8 @@ function colorCell(cell, event) {
 
 function attachGridButtonListener() {
     $('#btn-generate-grid').click(function () {
-        let nColumns = $('#input-grid-height').val();
-        let nRows = $('#input-grid-width').val();
+        let  nRows = $('#input-grid-height').val();
+        let nColumns = $('#input-grid-width').val();
 
         //Validate Inputs
         if (!nColumns || !nRows) {
