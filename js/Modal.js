@@ -5,8 +5,11 @@ var Modal = (function() {
 
     function displayModal(modalMessage, isError){
         let modalContainer = $('#modal-container');
-        modalContainer.css("opacity", 0);
-        modalContainer.css("display","block");
+        modalContainer.css({
+            opacity : 0,
+            display : "block"
+        })
+
         let modelData = modalContainer.find('.modal-data').first();
         modelData.empty();
         if(isError){
