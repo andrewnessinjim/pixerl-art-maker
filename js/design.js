@@ -42,31 +42,24 @@ function attachGridButtonListener() {
         let table = getHTMLTable(nRows, nColumns);
         $('.canvas-table-container').empty().append(table);
 
-        //All cells will initially have the selected background color
         $('.canvas-cell').css({
+            //All cells will initially have the selected background color
             backgroundColor: $('#input-bg-color').val(),
             borderColor: $('#input-border-color').val()
-        });
+        }).mouseenter(function (event) {
+            //Color cell as the mouse enters it
+            colorCell($(this), event);
+        }).mousedown(function (event) {
+            //Color the first cell too, on which the user clicks before dragging
+            event.preventDefault();
+            colorCell($(this), event);
+        }).contextmenu(function (event) {
+            //Ignore right click on canvas cells because its used for background coloring
+            event.preventDefault();
+        });;
 
         //Animates the table to zoom in
         $('.canvas-table').addClass('animate');
-
-        //Color cells as the mouse enters a cell
-        $('.canvas-cell').mouseenter(function (event) {
-            colorCell($(this), event);
-        });
-
-        //Color the first cell on which the user clicks before dragging
-        $('.canvas-cell').mousedown(function (event) {
-            event.preventDefault();
-            colorCell($(this), event);
-        });
-
-        //Prevent the context menu on cells, because right click is used for coloring with background color
-        $('.canvas-cell').contextmenu(function (event) {
-            //Ignore right click on canvas cells
-            event.preventDefault();
-        });
     });
 
     /**
