@@ -142,9 +142,10 @@ function generateHeader() {
 
     //Fade out the current color, and fade in a new random color when the mouse is hovered over any colored cell
     $('.banner-matrix-cell-on').mouseenter(function (event) {
-        $(this).fadeTo(1000, 0, function() {
-            $(this).css("background-color", headerColors[Math.floor(Math.random() * 5)]);
-            $(this).fadeTo(500, 1);
+        $(this).fadeTo(600, 0, function() {
+            $(this)
+            .css("background-color", headerColors[Math.floor(Math.random() * 5)])
+            .fadeTo(400, 1);
         })
     });
 }
