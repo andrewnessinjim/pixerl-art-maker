@@ -1,4 +1,4 @@
-const headerColors = ["red","yellow","green","blue","violet","pink"];
+const headerColors = ["red", "yellow", "green", "blue", "violet", "pink"];
 const MOUSE_BUTTON_LEFT = 1;
 const MOUSE_BUTTON_MIDDLE = 2;
 const MOUSE_BUTTON_RIGHT = 3;
