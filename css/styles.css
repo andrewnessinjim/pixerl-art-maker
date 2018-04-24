@@ -1,28 +1,28 @@
-@import url('https://fonts.googleapis.com/css?family=Chicle');
+@import url(https://fonts.googleapis.com/css?family=Chicle);
 
 body {
     background: url(../images/paper_background.jpg);
     background-repeat: repeat;
-    margin : 0px;
+    margin: 0px;
 }
 
 #banner {
-    margin : 10px auto;
+    margin: 10px auto;
     text-align: center;
     display: none;
 }
 
 .banner-matrix-cell-default {
     background-color: none;
-    width:1vw;
-    height:1vw; 
+    width: 1vw;
+    height: 1vw;
 }
 
 .banner-matrix-cell-on {
     background-color: brown;
-    border : 1px solid black;
-    width:1vw;
-    height:1vw;
+    border: 1px solid black;
+    width: 1vw;
+    height: 1vw;
 }
 
 .banner-character-table {
@@ -31,18 +31,20 @@ body {
     margin: 0.25vw;
 }
 
-#info_icon, #help_icon {
+#info_icon,
+#help_icon {
     cursor: pointer;
-    padding : 5px;
+    padding: 5px;
 }
 
-#info_icon:hover, #help_icon:hover {
+#info_icon:hover,
+#help_icon:hover {
     transform: scale(1.2)
 }
 
 .icon-container {
     text-align: center;
-    margin : 5px auto;
+    margin: 5px auto;
 }
 
 /* The Modal (background) */
@@ -61,11 +63,11 @@ body {
 
 .modal-content {
     background-color: #ebe5b2;
-    margin: 15% auto; 
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    box-shadow: 5px 5px 5px black; 
+    box-shadow: 5px 5px 5px black;
 }
 
 .modal-close-button {
@@ -83,10 +85,10 @@ body {
 }
 
 .form-header {
-    font-family: 'Chicle', cursive;
+    font-family: "Chicle", cursive;
     font-size: 180%;
-    flex:1;
-    margin : 10px;
+    flex: 1;
+    margin: 10px;
 }
 
 .form-container {
@@ -97,19 +99,21 @@ body {
     border: 1px solid brown;
 }
 
-@media (min-width : 850px) {
+@media (min-width: 850px) {
     .form-container {
         display: flex;
     }
 }
 
-#input-grid-height, #input-grid-width {
+#input-grid-height,
+#input-grid-width {
     padding: 5px 0;
     margin: 0 5px;
     max-width: 80px;
 }
 
-#input-grid-height:focus, #input-grid-width:focus {
+#input-grid-height:focus,
+#input-grid-width:focus {
     border: 2px solid darkgreen;
 }
 
@@ -118,8 +122,8 @@ body {
     background-color: darkgreen;
     color: white;
     border-radius: 5%;
-    border : 0;
-    margin : 5px;
+    border: 0;
+    margin: 5px;
     flex: 1;
     max-width: 120px;
     box-shadow: 2px 2px 2px black;
@@ -136,8 +140,8 @@ body {
 }
 
 .grid-input-container {
-    margin : 5px;
-    flex : 1;
+    margin: 5px;
+    flex: 1;
 }
 
 .canvas-cell {
@@ -151,7 +155,7 @@ body {
 }
 
 .canvas-table {
-    margin : 10px auto;
+    margin: 10px auto;
     border-collapse: collapse;
 }
 
@@ -161,9 +165,9 @@ body {
 
 @keyframes fullScale{
     from{
-        transform:scale(0);
+        transform: scale(0);
     }
     to{
-        transform:scale(1);
+        transform: scale(1);
     }
 }
