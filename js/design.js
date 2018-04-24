@@ -23,7 +23,7 @@ function colorCell(cell, event) {
         animateCell();
     }
     function animateCell() {
-        cell.css("opacity", 0).animate({opacity : 1},200);
+        cell.css("opacity", 0).animate({opacity: 1},200);
     }
 }
 
