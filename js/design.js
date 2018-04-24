@@ -116,7 +116,8 @@ function setupModal() {
 }
 
 /**
- * @description Attaches a listener which is called when the form inputs lose focus. The listener defaults the values if left empty.
+ * @description Attaches a listener which is called when the form inputs lose focus. The listener defaults
+ * the values if left empty.
  */
 function setupFormValidator() {
     $('.grid-input-container input[type="number"]').focusout(function () {
