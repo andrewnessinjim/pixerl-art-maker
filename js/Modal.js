@@ -1,16 +1,16 @@
 /**
  * @description Modal object exposes two functions to show Help and Info Modals respectively.
  */
-var Modal = (function() {
+const Modal = (function() {
 
     function displayModal(modalMessage, isError){
-        let modalContainer = $('#modal-container');
+        const modalContainer = $('#modal-container');
         modalContainer.css({
             opacity: 0,
             display: "block"
         })
 
-        let modelData = modalContainer.find('.modal-data').first();
+        const modelData = modalContainer.find('.modal-data').first();
         modelData.empty();
         if(isError){
             modalMessage = '<img src="images/bug.png">' + modalMessage;
@@ -25,7 +25,7 @@ var Modal = (function() {
     }
 
     function hideModal(){
-        let modalContainer = $('#modal-container');
+        const modalContainer = $('#modal-container');
         modalContainer.css("opacity", 1);
         modalContainer.animate({
             opacity: 0

@@ -3,7 +3,7 @@
 * @constructor
 * @param {string} string - The string which will be converted to pixelated HTML tables.
 */
-var MatrixString = (function(){
+const MatrixString = (function(){
     function MatrixCharacter(character) {
         this.character=character;
         //The pattern of 1s in the matrix is the pattern of the corresponding character in the map.
@@ -88,13 +88,13 @@ var MatrixString = (function(){
         };
         this.getHTMLString = function() {
             let matrix="";
-            let characterMatrix = this.characterMap[this.character];
+            const characterMatrix = this.characterMap[this.character];
             if(!characterMatrix) {
                 console.log(`Character '${this.character}' not supported, replacing with a space`);
                 characterMatrix = this.characterMap[" "];
             }
             for(let row=0;row<characterMatrix.length;row++) {
-                let rowCells = [];
+                const rowCells = [];
                 for(let col=0;col<characterMatrix[row].length;col++) {
                     //Each cell have either banner-matrix-cell-on or banner-matrix-cell-default as it's class. CSS is used to color the cells based on these classes.
                     rowCells.push(

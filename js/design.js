@@ -29,8 +29,8 @@ function colorCell(cell, event) {
 
 function attachGridButtonListener() {
     $('#btn-generate-grid').click(function () {
-        let nRows = $('#input-grid-height').val();
-        let nColumns = $('#input-grid-width').val();
+        const nRows = $('#input-grid-height').val();
+        const nColumns = $('#input-grid-width').val();
 
         //Validate Inputs
         if (!nColumns || !nRows) {
@@ -39,7 +39,7 @@ function attachGridButtonListener() {
         }
 
         //Create and attach the table to the DOM
-        let table = getHTMLTable(nRows, nColumns);
+        const table = getHTMLTable(nRows, nColumns);
         $('.canvas-table-container').empty().append(table);
 
         $('.canvas-cell').css({
@@ -71,7 +71,7 @@ function attachGridButtonListener() {
     function getHTMLTable(nRows, nColumns) {
         let table = "";
         for (let rowNum = 0; rowNum < nRows; rowNum++) {
-            let row = [];
+            const row = [];
             for (let colNum = 0; colNum <= nColumns; colNum++) {
                 row.push('<td class="canvas-cell"></td>');
             }
