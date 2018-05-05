@@ -84,10 +84,23 @@ body {
     cursor: pointer;
 }
 
+@media (min-width: 980px) {
+    .panel-canvas-container {
+        display: flex;
+    }
+}
+
+.panel-container {
+    flex: 1;
+}
+
+.canvas-container {
+    flex: 4;
+}
+
 .form-header {
     font-family: "Chicle", cursive;
-    font-size: 180%;
-    flex: 1;
+    font-size: 140%;
     margin: 10px;
 }
 
@@ -97,12 +110,6 @@ body {
     max-width: 80%;
     margin: 10px auto;
     border: 1px solid brown;
-}
-
-@media (min-width: 850px) {
-    .form-container {
-        display: flex;
-    }
 }
 
 #input-grid-height,
@@ -124,7 +131,6 @@ body {
     border-radius: 5%;
     border: 0;
     margin: 5px;
-    flex: 1;
     max-width: 120px;
     box-shadow: 2px 2px 2px black;
 }
@@ -141,7 +147,6 @@ body {
 
 .grid-input-container {
     margin: 5px;
-    flex: 1;
 }
 
 .canvas-cell {

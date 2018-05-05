@@ -19,50 +19,53 @@
             <header>
                 <div id="banner"></div>
             </header>
+            <div class="panel-canvas-container">
+                <div class="panel-container">
+                    <div class ="icon-container">
+                        <img id = "info_icon" src="images/info_small.png" alt="Information Button">
+                        <img id = "help_icon" src="images/help_small.png" alt="Help Button">
+                    </div>
+                    <div class="form-container">
+                        <p class="form-header">Select Grid Size</p>
 
-            <div class ="icon-container">
-                <img id = "info_icon" src="images/info_small.png" alt="Information Button">
-                <img id = "help_icon" src="images/help_small.png" alt="Help Button">
-            </div>
-            <div class="form-container">
-                <p class="form-header">Select Grid Size</p>
+                        <div class="grid-input-container">
+                            <label for="input-grid-height">Height: </label>
+                            <input type="number" id="input-grid-height" value=10>
+                        </div>
 
-                <div class="grid-input-container">
-                    <label for="input-grid-height">Height: </label>
-                    <input type="number" id="input-grid-height" value=10>
+                        <div class="grid-input-container">
+                            <label for="input-grid-width">Width: </label>
+                            <input type="number" id="input-grid-width" value=10>
+                        </div>
+
+                        <input type="button" value="New Grid" id="btn-generate-grid">
+                    </div>
+
+                    <div class="form-container">
+                        <p class="form-header">Pick colors</p>
+
+                        <div class="grid-input-container">
+                            <label for="input-fg-color">Foreground: </label>
+                            <input type="color" id="input-fg-color" value="#000000">
+                        </div>
+
+                        <div class="grid-input-container">
+                            <label for="input-bg-color">Background: </label>
+                            <input type="color" id="input-bg-color" value="#ffffff">
+                        </div>
+
+                        <div class="grid-input-container">
+                            <label for="input-border-color">Border: </label>
+                            <input type="color" id="input-border-color" value="#000000">
+                        </div>
+                    </div>
+                </div> <!--End panel-container-->
+
+                <div class="canvas-container">
+                    <p class="form-header">Design Canvas</p>
+                    <div class="canvas-table-container"></div>
                 </div>
-
-                <div class="grid-input-container">
-                    <label for="input-grid-width">Width: </label>
-                    <input type="number" id="input-grid-width" value=10>
-                </div>
-
-                <input type="button" value="New Grid" id="btn-generate-grid">
-            </div>
-
-            <div class="form-container">
-                <p class="form-header">Pick colors</p>
-
-                <div class="grid-input-container">
-                    <label for="input-fg-color">Foreground: </label>
-                    <input type="color" id="input-fg-color" value="#000000">
-                </div>
-
-                <div class="grid-input-container">
-                    <label for="input-bg-color">Background: </label>
-                    <input type="color" id="input-bg-color" value="#ffffff">
-                </div>
-
-                <div class="grid-input-container">
-                    <label for="input-border-color">Border: </label>
-                    <input type="color" id="input-border-color" value="#000000">
-                </div>
-            </div>
-
-            <div class="canvas-container">
-                <p class="form-header">Design Canvas</p>
-                <div class="canvas-table-container"></div>
-            </div>
+            </div> <!--End panel-canvas-container -->
         </div>
 
         <div id="modal-container" class="modal">
