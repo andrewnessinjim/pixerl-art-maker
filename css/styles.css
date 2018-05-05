@@ -84,24 +84,36 @@ body {
     cursor: pointer;
 }
 
+.panel-container {
+    flex: 1;
+    border: 1px solid brown;
+    box-shadow: 5px 5px 2px rgba(165, 42, 42, 0.5);
+    margin: 0 auto;
+    max-width: 90%;
+}
+
 @media (min-width: 980px) {
     .panel-canvas-container {
         display: flex;
     }
-}
-
-.panel-container {
-    flex: 1;
+    .panel-container {
+        margin-left: 10px;
+    }
 }
 
 .canvas-container {
     flex: 4;
 }
 
-.form-header {
+.form-header,
+.canvas-header {
     font-family: "Chicle", cursive;
     font-size: 140%;
     margin: 10px;
+}
+
+.canvas-header {
+    font-size: 180%;
 }
 
 .form-container {
@@ -109,7 +121,7 @@ body {
     align-items: center;
     max-width: 80%;
     margin: 10px auto;
-    border: 1px solid brown;
+    border: 1px solid rgba(165, 42, 42, 0.3);
 }
 
 #input-grid-height,
@@ -125,7 +137,7 @@ body {
 }
 
 #btn-generate-grid {
-    padding: 15px 5px;
+    padding: 10px 10px;
     background-color: darkgreen;
     color: white;
     border-radius: 5%;
