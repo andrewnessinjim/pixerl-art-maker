@@ -14,8 +14,16 @@ $(function() {
     generateHeader();
     setupModal();
     attachGridButtonListener();
+    attachBorderChangeListener();
 });
 
+function attachBorderChangeListener (){
+    $('#input-border-color').change(function() {
+        $('.canvas-cell').css(
+            'borderColor', $('#input-border-color').val()
+        );
+    });
+}
 function colorCell(cell, event) {
     if(event.which === MOUSE_BUTTON_LEFT) {
         cell.css("background-color", $('#input-fg-color').val());
