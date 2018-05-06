@@ -93,12 +93,19 @@ body {
     max-width: 500px;
 }
 
+.github-banner {
+    display: none;
+}
+
 @media (min-width: 980px) {
     .panel-canvas-container {
         display: flex;
     }
     .panel-container {
         margin-left: 10px;
+    }
+    .github-banner {
+        display: block;
     }
 }
 
