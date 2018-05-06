@@ -86,9 +86,14 @@ const Modal = (function() {
         `);
     }
 
+    function showErrorMessage(errorMessage){
+        displayModal(`<p>${errorMessage}</p>`, true);
+    }
+
     return {
         showHelp: showHelp,
         showInfo: showInfo,
-        hideModal: hideModal
+        hideModal: hideModal,
+        showErrorMessage: showErrorMessage
     }
 })();

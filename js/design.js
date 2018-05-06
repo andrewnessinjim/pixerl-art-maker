@@ -2,14 +2,16 @@ const headerColors = ["red", "yellow", "green", "blue", "violet", "pink"];
 const MOUSE_BUTTON_LEFT = 1;
 const MOUSE_BUTTON_MIDDLE = 2;
 const MOUSE_BUTTON_RIGHT = 3;
-const DEFAULT_GRID_SIDE = 10;
+const MIN_ROWS_SUPPORTED = 1;
+const MIN_COLS_SUPPORTED = 1;
+const MAX_ROWS_SUPPORTED = 50;
+const MAX_COLS_SUPPORTED = 50;
 
 /**
  * @description Entry point for javascript code. This function is executed after the DOM loads.
  */
 $(function() {
     generateHeader();
-    setupFormValidator();
     setupModal();
     attachGridButtonListener();
 });
@@ -33,8 +35,10 @@ function attachGridButtonListener() {
         const nColumns = $('#input-grid-width').val();
 
         //Validate Inputs
-        if (!nColumns || !nRows) {
-            Modal.displayModal("<p>Please enter values from 1 to 100 only</p>", true);
+        if (nColumns < MIN_COLS_SUPPORTED || nRows < MIN_ROWS_SUPPORTED ||
+             nColumns > MAX_COLS_SUPPORTED || nRows > MAX_ROWS_SUPPORTED) {
+            Modal.showErrorMessage(`Please enter values from ${MIN_ROWS_SUPPORTED} to ${MAX_ROWS_SUPPORTED} for height
+                                    and ${MIN_COLS_SUPPORTED} to ${MAX_COLS_SUPPORTED} for width.`);
             return;
         }
 
@@ -111,18 +115,6 @@ function setupModal() {
     $('#modal-container').click(function(event) {
         if(event.target.id === 'modal-container') {
             Modal.hideModal();
-        }
-    });
-}
-
-/**
- * @description Attaches a listener which is called when the form inputs lose focus. The listener defaults
- * the values if left empty.
- */
-function setupFormValidator() {
-    $('.grid-input-container input[type="number"]').focusout(function () {
-        if (!$(this).val()) {
-            $(this).val(DEFAULT_GRID_SIDE);
         }
     });
 }
