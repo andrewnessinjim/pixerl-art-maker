@@ -84,7 +84,7 @@ function attachGridButtonListener() {
         let table = "";
         for (let rowNum = 0; rowNum < nRows; rowNum++) {
             const row = [];
-            for (let colNum = 0; colNum <= nColumns; colNum++) {
+            for (let colNum = 0; colNum < nColumns; colNum++) {
                 row.push('<td class="canvas-cell"></td>');
             }
             table = [
