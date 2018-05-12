@@ -224,8 +224,8 @@ body {
 
 .github-banner {
     position: absolute;
-    top: 40px;
-    right: -60px;
+    top: 50px;
+    right: -70px;
     background-color: rgb(134, 6, 6);
     color: white;
     font-weight: bolder;
@@ -235,12 +235,13 @@ body {
     border-bottom: 2px dashed rgb(255, 165, 0, 0.6);
     transform: rotate(45deg);
     max-width: 40%;
-    font-size: 14px;
+    font-size: 13px;
     font-family: 'Gloria Hallelujah', cursive;
     text-shadow: 0.5px 0.5px 0 darkorange,
                 -0.5px 0.5px 0 darkorange,
                 0.5px -0.5px 0 darkorange,
                 -0.5px -0.5px 0 darkorange;
+    letter-spacing: 2px;
 }
 
 .github-banner:hover {
