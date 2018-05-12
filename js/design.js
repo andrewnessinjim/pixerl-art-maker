@@ -11,6 +11,9 @@ const MAX_COLS_SUPPORTED = 50;
  * @description Entry point for javascript code. This function is executed after the DOM loads.
  */
 $(function() {
+    $('body').css({
+        "opacity": 1
+    });
     generateHeader();
     setupModal();
     attachGridButtonListener();
