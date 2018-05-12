@@ -23,6 +23,11 @@ body {
     border: 1px solid black;
     width: 1vw;
     height: 1vw;
+    transition: background-color 2s, opacity 0.4s;
+}
+
+.banner-matrix-cell-on:hover {
+    opacity: 0;
 }
 
 .banner-character-table {

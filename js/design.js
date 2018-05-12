@@ -134,12 +134,8 @@ function generateHeader() {
     //Create the banner and fade it in. The #banner element's display property must be set to "none" for this function to work
     $('#banner').append(new MatrixString("PIXEL ART MAKER").getHTMLString()).fadeIn();
 
-    //Fade out the current color, and fade in a new random color when the mouse is hovered over any colored cell
+    //Select a random color
     $('.banner-matrix-cell-on').mouseenter(function (event) {
-        $(this).fadeTo(600, 0, function() {
-            $(this)
-            .css("background-color", headerColors[Math.floor(Math.random() * 5)])
-            .fadeTo(400, 1);
-        })
+        $(this).css("background-color", headerColors[Math.floor(Math.random() * 5)]);
     });
 }
