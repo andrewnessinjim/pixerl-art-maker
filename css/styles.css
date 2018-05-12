@@ -242,6 +242,7 @@ body {
                 0.5px -0.5px 0 darkorange,
                 -0.5px -0.5px 0 darkorange;
     letter-spacing: 2px;
+    transition: all 0.2s;
 }
 
 .github-banner:hover {
