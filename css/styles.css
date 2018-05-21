@@ -10,7 +10,6 @@ body {
 #banner {
     margin: 10px auto;
     text-align: center;
-    display: none;
 }
 
 .banner-matrix-cell-default {

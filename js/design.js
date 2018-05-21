@@ -135,7 +135,11 @@ function setupModal() {
  */
 function generateHeader() {
     //Create the banner and fade it in. The #banner element's display property must be set to "none" for this function to work
-    $('#banner').append(new MatrixString("PIXEL ART MAKER").getHTMLString()).fadeIn();
+    $('#banner')
+        .css("display","none")
+        .append(new MatrixString("PIXEL ART MAKER")
+        .getHTMLString())
+        .fadeIn();
 
     //Select a random color
     $('.banner-matrix-cell-on').mouseenter(function (event) {
